@@ -56,23 +56,6 @@ nav ul{
     line-height: 1;
 }
 
-nav .bookmarks {
-    clear: both;
-    margin: 2rem 0 4rem 0;
-    border: .1rem solid var(--main-color);
-    padding: 1rem;
-}
-
-nav .bookmarksList {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-nav .bookmarksList li{
-    padding-right: 1rem;
-    margin-bottom: .5rem;
-}
-
 nav .title {
     font-size: 4rem;
 }
@@ -86,15 +69,6 @@ nav button{
 
 nav > ul > li button{
     float: right;
-}
-
-nav .bookmarksLit {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-nav .bookmarksLit li button{
-    margin-right: 1rem;
 }
 /**/
 
