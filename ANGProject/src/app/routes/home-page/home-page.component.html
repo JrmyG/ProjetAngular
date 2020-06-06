@@ -27,15 +27,19 @@
     >Search</button>
 </form>
 
-<div *ngIf="postCollection">
-    <article *ngIf="!postCollection.articles?.length" >
-      <p>Aucun article trouvé</p>
-    </article>
-    <article *ngFor="let article of postCollection.articles| slice:0:10;">
-      <h2>{{article.title}}</h2>
-      <p>
-        {{article.description}}
-      </p>
+<div class="news" *ngIf="postCollection">
+  <article *ngIf="!postCollection.articles?.length" >
+    <p>Aucun article trouvé</p>
+  </article>
+  <article *ngFor="let article of postCollection.articles | slice:0:10;">
+    <aside class="articleImage">
+      <img *ngIf="article.urlToImage != 'null'" src="{{article.urlToImage}}">
+    </aside>
+    <div class="content">
+      <h2 class="title">{{article.title}}</h2>
+      <p class="publishedAt">{{article.publishedAt}}</p>
+      <p class="description" >{{article.description}}</p>
       <a href="{{article.url}}" target="_blank">Read full article</a>
-    </article>
-  </div>
+    </div>
+  </article>
+</div>
