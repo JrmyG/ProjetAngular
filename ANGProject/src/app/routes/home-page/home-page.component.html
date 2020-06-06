@@ -1,0 +1,41 @@
+<p>home-page works!</p>
+
+<app-form-register></app-form-register>
+
+<app-form-login
+    (formSubmit)="getUserInfo($event)"
+></app-form-login>
+
+<form>
+    <select 
+    name="source"
+    [(ngModel)]="source"
+    >
+        <option value="{{source.id}}" *ngFor="let source of sourcesCollection.sources" >{{source.name}}</option>
+    </select>
+
+    <input
+        name="keyword"
+        [(ngModel)]="keyword"
+        type="text"
+        placeholder="Any Keyword ?"
+    >
+
+    <button 
+    type="submit"
+    (click)="onSubmit(keyword, source)"
+    >Search</button>
+</form>
+
+<div *ngIf="postCollection">
+    <article *ngIf="!postCollection.articles?.length" >
+      <p>Aucun article trouvé</p>
+    </article>
+    <article *ngFor="let article of postCollection.articles| slice:0:10;">
+      <h2>{{article.title}}</h2>
+      <p>
+        {{article.description}}
+      </p>
+      <a href="{{article.url}}" target="_blank">Read full article</a>
+    </article>
+  </div>

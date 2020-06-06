@@ -1,0 +1,21 @@
+<!-- <form 
+    [formGroup]="formData" 
+    (submit)="formSearch.emit(formData.value.source)"
+>
+    <select formControlName="source" 
+            name="source"
+            [(ngModel)]="source"
+            (change)="onChangeSource($event.target.value)">
+        <option value="{{source.id}}" *ngFor="let source of sourcesCollection.sources; index as i " >{{source.name}}</option>
+    </select>
+
+    <input formControlName="keyword" 
+            name="keyword"
+            [(ngModel)]="keyword"
+            >
+
+    <button 
+        type="submit"
+        (click)="onSubmit("
+    >OK</button>
+</form> -->

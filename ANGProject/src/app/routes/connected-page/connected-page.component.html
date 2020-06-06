@@ -1,0 +1,54 @@
+<div>
+  <select
+    name="favoris"
+    [(ngModel)]="favoris"
+    *ngIf="favoris.length"
+    (ngModelChange)="onChangeSource($event)"
+  >
+  <option value="{{fav}}" *ngFor="let fav of favoris">{{fav}}</option>
+</select>
+</div>
+
+
+<form class="searchForm">
+  <select 
+  name="source"
+  [(ngModel)]="source"
+  >
+    <option value="{{source.id}}" *ngFor="let source of sourcesCollection.sources" >{{source.name}}</option>
+  </select>
+
+  <input
+    name="keyword"
+    [(ngModel)]="keyword"
+    type="text"
+    placeholder="Any Keyword ?"
+  >
+
+  <button 
+  type="submit"
+  (click)="onSubmit(keyword, source)"
+  >Search</button>
+
+</form>
+
+<button *ngIf="!favoris.includes(source)" (click)="addFavoris(source)">Add Favoris</button>
+<button *ngIf="favoris.includes(source)" (click)="deleteFavoris(source)">Delete Favoris</button>
+
+
+<div class="news" *ngIf="postCollection">
+  <article *ngIf="!postCollection.articles?.length" >
+    <p>Aucun article trouvé</p>
+  </article>
+  <article *ngFor="let article of postCollection.articles | slice:0:10;">
+    <aside class="articleImage">
+      <img *ngIf="article.urlToImage != 'null'" src="{{article.urlToImage}}">
+    </aside>
+    <div class="content">
+      <h2 class="title">{{article.title}}</h2>
+      <p class="publishedAt">{{article.publishedAt}}</p>
+      <p class="description" >{{article.description}}</p>
+      <a href="{{article.url}}" target="_blank">Read full article</a>
+    </div>
+  </article>
+</div>

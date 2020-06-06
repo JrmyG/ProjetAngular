@@ -1,0 +1,194 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* 
+Reset
+*/
+:root{
+    --main-color: blue;
+}
+
+body{
+    padding: 8rem;
+}
+
+header{
+    margin-bottom: 5rem;
+}
+
+input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus{
+    background-color: transparent;
+}
+
+input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus{
+    border-color: var(--main-color);
+}
+
+.button, button, input[type='button'], input[type='reset'], input[type='submit']{
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+a {
+    color: var(--main-color);
+}
+/**/
+
+/* 
+Common
+*/
+.error{
+    border: .1rem solid var(--main-color) !important;
+}
+
+.hidden{
+    display: none;
+}
+/**/
+
+
+/* 
+Navigation
+*/
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+nav .bookmarks {
+    clear: both;
+    margin: 2rem 0 4rem 0;
+    border: .1rem solid var(--main-color);
+    padding: 1rem;
+}
+
+nav .bookmarksList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav .bookmarksList li{
+    padding-right: 1rem;
+    margin-bottom: .5rem;
+}
+
+nav .title {
+    font-size: 4rem;
+}
+
+nav button{
+    height: auto;
+    padding: .5rem;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+nav > ul > li button{
+    float: right;
+}
+
+nav .bookmarksLit {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav .bookmarksLit li button{
+    margin-right: 1rem;
+}
+/**/
+
+/* 
+News feed/form
+*/
+.searchForm select {
+    font-size: 3rem;
+    height: auto;
+    font-weight: 100;
+    color: var(--main-color);
+    border: .1rem dotted var(--main-color);
+}
+
+.searchForm [type="button"] {
+    float: right;
+}
+
+.searchForm {
+    border-bottom: .1rem solid blue;
+    padding-bottom: 1rem;
+}
+
+.searchForm [type="button"]{
+    display: none;
+}
+
+.searchForm [type="button"].active{
+    display: initial;
+}
+
+.news{
+    line-height: 1;
+    list-style: none;
+}
+
+.news > li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    min-height: 20rem;
+}
+
+.news article {
+    margin-bottom: 3rem;
+    text-align: right;
+}
+
+.news .articleImage {
+    max-width: 100%;
+    display: inline;
+}
+
+.news img {
+    width: calc( 40% - 1rem );
+    position: relative;
+    position: center;
+}
+
+.news .content {
+    max-width: 100%;
+    width: 50%;
+    display: inline-block;
+    margin-left: 1%;
+    margin-top: 2%;
+    vertical-align: top;
+    text-align: left;
+}
+
+.news ul {
+    padding: 0;
+    margin: auto;
+    list-style: none;
+    width: calc( 60% - 5rem );
+}
+
+.news .title {
+    font-size: 2.1rem;
+    margin-bottom: 2rem;
+}
+
+.news .publishedAt {
+    background-color: var(--main-color);
+    padding: .5rem;
+    display: inline-block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 800;
+}
+
+.news a {
+    border-bottom: .1rem solid blue;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+/**/
