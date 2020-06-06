@@ -5,7 +5,8 @@
   import { Component, OnInit } from '@angular/core';
   import { Router } from '@angular/router';
 
-  // Services
+  // Inner
+  import { ObservablesService } from "../../services/observable/observable.service";
   import { CrudService } from "../../services/crud/crud.service";
 //
 
@@ -40,23 +41,34 @@ export class HomePageComponent implements OnInit {
       this.sourcesCollection = await this.CrudService.readAllItems('sources');
     };
 
-    // Method to get User Infos
-    public getUserInfo = async (email: String ) => {
-    // Get user infos
-     // const userInfo = await this.CrudService.readOneItem('login', `email=${infos.email}&password=${infos.password}`);
+    // Method Register
+    register = async (user: any) => {
 
-    
-    const userInfo = await this.CrudService.readOneItem('users', `email=${email}`)
-    
+      const userInfo = await this.CrudService.createItem('register', user);
+      //User successfully registered
+      if(Object.keys(userInfo.data).length > 0){
+          this.Router.navigateByUrl('/connected');
+      }
+    };
+
+    // Method Connexion
+    public getUserInfo = async (user: Object) => {
+	    
+      const userInfo = await this.CrudService.createItem('login', user);
+      
+      //User logged in
+      if(Object.keys(userInfo.data).length > 0){
+        //Set his token in localStorage
+        localStorage.setItem('token', userInfo.data.token);
+            
+        const userData = await this.CrudService.createItem('me', { token: localStorage.getItem('token') });
+
+        //Change route endpoint
+        this.Router.navigateByUrl('/connected');
+      }
+    }; 
   //
 
-    // Check user info
-    if(userInfo.length > 0){
-        // Change route endpoint
-        this.Router.navigateByUrl('/connected');
-    }
-  };
-  
   /* 
   Hooks
   */

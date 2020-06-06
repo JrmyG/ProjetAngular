@@ -32,14 +32,15 @@ export class AppComponent implements OnInit {
         private Router: Router
     ){}
 
-    async ngOnInit(){
-        const userInfo = await this.CrudService.readOneItem('users', `email=${localStorage.getItem('userEmail')}`);
+    // async ngOnInit(){
+    //     const userInfo = await this.CrudService.readOneItem('users', `email=${localStorage.getItem('userEmail')}`);
 
-        // Check user info
-        if(userInfo.length > 0){
-            // Change route endpoint
-            this.Router.navigateByUrl('/connected');
-        };
-    };
+    //     // Check user info
+    //     if(userInfo.length > 0){
+    //         // Change route endpoint
+    //         this.Router.navigateByUrl('/connected');
+    //     };
+    // };
+    ngOnInit() { }
 };
 //

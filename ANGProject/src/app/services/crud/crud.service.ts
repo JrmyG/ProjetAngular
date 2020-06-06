@@ -15,8 +15,8 @@ Definition
 @Injectable()
 export class CrudService {
 
-    private apiKey = "6edf24becd2244629c1a4cc27c1c3c94";
-
+  protected apiUrl = 'https://newsapp.dwsapp.io/api/';
+  protected apiKey = "6edf24becd2244629c1a4cc27c1c3c94";
 
   // Inject module(s) in the service
   constructor( private HttpClient: HttpClient, private ObservablesService: ObservablesService ){};
@@ -49,18 +49,16 @@ export class CrudService {
     .catch(this.handleError);
   };
 
-  // CRUD method: create item
-  public createItem(endpoint: String, data: any): Promise<any>{
+	// CRUD method: create item
+  public createItem(endpoint: String,data: any): Promise<any>{
     // Set header
     let myHeader = new HttpHeaders();
     myHeader.append('Content-Type', 'application/json');
 
     // Launch request
-    return this.HttpClient.post(`https://newsapi.org/v2/${endpoint}`, data, { headers: myHeader })
-    .toPromise()
-    .then(data => this.getData(endpoint, data))
-    .catch(this.handleError);
-  };
+    return this.HttpClient.post(`${this.apiUrl}${endpoint}`, data, { headers: myHeader })
+    .toPromise().then(data => this.getData(endpoint,data)).catch(this.handleError);
+  }
 
   // CRUD method: edit an item
   public updateItem(endpoint: String, _id: String, data: any): Promise<any>{

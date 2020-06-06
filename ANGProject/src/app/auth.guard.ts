@@ -28,12 +28,15 @@ Exports
 
         canActivate(): Promise<any> {
             return new Promise( (resolve, reject) => {
-                this.CrudService.readOneItem('users', `email=${localStorage.getItem('userEmail')}`)
-                .then( ( apiResponse ) =>  {
-                    if(apiResponse.length > 0){ return resolve(true) }
-                    else{ this.Router.navigateByUrl('/') };
+                this.CrudService.createItem('me', { token: localStorage.getItem('token') })
+                .then(apiResponse =>  {  
+                    if (Object.keys(apiResponse.data).length > 0) {
+                        return resolve(true)    
+                    } else {
+                        this.Router.navigateByUrl('/connected')
+                    };
                 })
-                .catch( ( apiResponse ) =>  this.Router.navigateByUrl('/'))
+                .catch( (apiResponse) => this.Router.navigateByUrl('/'))
             })
         }
     }

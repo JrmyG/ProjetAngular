@@ -1,6 +1,6 @@
-<p>home-page works!</p>
-
-<app-form-register></app-form-register>
+<app-form-register
+  (formSubmit)="register($event)">
+</app-form-register>
 
 <app-form-login
     (formSubmit)="getUserInfo($event)"
